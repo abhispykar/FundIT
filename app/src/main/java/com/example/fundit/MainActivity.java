@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent iHome = new Intent(MainActivity.this,HomeScreen.class);
 
-        new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable()
+        {
             @Override
             public void run() {
 

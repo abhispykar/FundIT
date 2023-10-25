@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!--on below line we are creating progress bar-->
+
     <ImageView
         android:id="@+id/idIVLogo"
         android:layout_width="wrap_content"
@@ -16,16 +18,22 @@
         android:layout_centerInParent="true"
         android:layout_margin="25dp"
         android:src="@drawable/fundit_logo"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
-    <!--on below line we are creating progress bar-->
     <ProgressBar
         android:id="@+id/idPBLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/idIVLogo"
-        android:layout_centerInParent="true"
         android:indeterminateTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/idIVLogo"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.635"
         tools:ignore="MissingConstraints" />
 
 

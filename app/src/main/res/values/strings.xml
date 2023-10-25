@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FundIt</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_password">Enter password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="signup">Sign Up</string>
+    <string name="if_already_register">Already Register</string>
+    <string name="signin">Sign in</string>
+</resources>

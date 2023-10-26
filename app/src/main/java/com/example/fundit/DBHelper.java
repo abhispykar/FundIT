@@ -25,19 +25,21 @@ public class DBHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
 
     }
-    public Boolean insertData(String username,String password){
+    public Boolean insertData(String fname,String lname,String email,String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
-        contentValues.put("username",username);
+        contentValues.put("firstName",fname);
+        contentValues.put("lastName",lname);
+        contentValues.put("username",email);
         contentValues.put("password",password);
         long result = MyDB.insert("users",null,contentValues);
         if(result==-1) return false;
         else
             return true;
     }
-    public Boolean checkusername(String username){
+    public Boolean checkusername(String email){
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from users where username=?",new String[]{username});
+        Cursor cursor = MyDB.rawQuery("Select * from email where username=?",new String[]{email});
         if(cursor.getCount()>0)
             return  true;
         else

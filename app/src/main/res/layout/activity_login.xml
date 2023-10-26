@@ -9,25 +9,25 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:hint="User Name" />
+        android:hint="User Email" />
     <EditText
 
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/email"
         android:hint="Password" />
     <Button
-        android:id="@+id/btn_signup"
+        android:id="@+id/btn_signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/sign_up"
+        android:text="@string/sign_in"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,12 +37,12 @@
 
     <Button
 
-        android:id="@+id/btnsignin"
+        android:id="@+id/btnsignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Existing user! Go to Sign in page"
+        android:text="New user! Go to Sign up page"
         android:layout_marginTop="50dp"
-        android:layout_below="@+id/btn_signup"/>
+        android:layout_below="@+id/btn_signin"/>
 
 
 </RelativeLayout>

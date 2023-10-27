@@ -23,7 +23,7 @@ public class HomeScreen extends AppCompatActivity {
 
         signup = (Button) findViewById(R.id.btn_signup);
         signin = (Button) findViewById(R.id.btn_signin);
-        DB = new DBHelper(this);
+        DB = new DBHelper(getApplicationContext());
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

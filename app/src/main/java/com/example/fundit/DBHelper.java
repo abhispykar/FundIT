@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues contentValues= new ContentValues();
         contentValues.put("firstName",fname);
         contentValues.put("lastName",lname);
-        contentValues.put("username",email);
+        contentValues.put("email",email);
         contentValues.put("password",password);
         contentValues.put("userType",userType);
 

@@ -47,6 +47,7 @@ public class SignUp extends AppCompatActivity {
                 }
                 else
                 {
+
                     Boolean checkuser=DB.checkusername(userEmail);
                     if(checkuser==false)
                     {

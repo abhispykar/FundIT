@@ -37,15 +37,17 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintVertical_bias="0.748"
                     app:srcCompat="@drawable/ashneer_profile" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ashneer Grover"
+                    android:text="Abhishek Kumar"
                     android:layout_marginTop="16dp"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -58,7 +60,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ashneergrover@gmail.com"
+                    android:text="abhispykar@gmail.com"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView"
                     app:layout_constraintStart_toStartOf="@+id/textView"
@@ -78,7 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:layout_marginTop="12dp"
-                        android:text="Ashneer Grover is an Angel Investor and an Entrepreneur from India and is currently the co-founder of CrickPe (Third Unicorn). He has Co-founded Indian Fintech startup BharatPe in 2018"
+                        android:text="I am a passionate coder who has completed his masters from MES IMCC pune "
                         android:textSize="20sp" />
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -92,12 +94,11 @@
                         android:drawableStart="@drawable/ic_1"
                         android:drawablePadding="20dp"
                         android:paddingStart="20dp"
-                        android:text="Portfolio Companies"
+                        android:text="My Ideas"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         style="@android:style/Widget.Button"
                         android:textAlignment="viewStart" />
-
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button3"
                         android:layout_width="match_parent"

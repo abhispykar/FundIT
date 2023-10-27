@@ -6,15 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#38efd3"
+    android:padding="10dp"
     android:orientation="vertical"
     tools:context=".HomeScreen">
 
     <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="259dp"
         android:layout_marginTop="40dp"
-        android:src="@drawable/fundit_logo"
+        android:src="@drawable/handshake"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:text="Funding platform for investor and founders"
+        android:text="FundIt is a mobile app that connects investors and startup founders. Investors can browse startups and invest in the ones they believe have the most potential. Startup founders can pitch their ideas to investors and raise the capital they need to launch and grow their businesses"
         app:layout_constraintBottom_toTopOf="@+id/btn_signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

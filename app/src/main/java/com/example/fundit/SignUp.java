@@ -34,6 +34,7 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                hi tushar
 
                 String fname = firstName.getText().toString();
                 String lname = lastName.getText().toString();

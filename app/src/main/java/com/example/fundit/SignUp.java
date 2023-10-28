@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity {
 
-    Button btnSignUp;
+    Button btnSignUp,btnSignIn;
     EditText firstName,lastName,password,email;
     DBHelper DB;
     Spinner sp_user;
@@ -27,9 +27,18 @@ public class SignUp extends AppCompatActivity {
         password=findViewById(R.id.et_password);
         email=findViewById(R.id.et_email);
         btnSignUp=findViewById(R.id.btn_signup);
+        btnSignIn=findViewById(R.id.btn_signin);
         sp_user=findViewById(R.id.sp_usertype);
 
         DB = new DBHelper(getApplicationContext());
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

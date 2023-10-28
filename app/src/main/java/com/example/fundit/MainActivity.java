@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(iHome);
 
             }
-        },4000);
+        },2000);
 
     }
 }

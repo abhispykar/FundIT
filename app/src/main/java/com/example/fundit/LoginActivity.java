@@ -61,8 +61,19 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkuserpass==true)
                     {
                         Toast.makeText(getApplicationContext(),"Sign in Successfully",Toast.LENGTH_LONG).show();
-                        Intent intent=new Intent(getApplicationContext(),InvestorProfile.class);
-                        startActivity(intent);
+
+                        String userType=DB.userTypeCheck(user);
+                        if(userType=="Investor")
+                        {
+                            Intent intent=new Intent(getApplicationContext(),InvestorProfile.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Intent intent=new Intent(getApplicationContext(),StartupFounderProfile.class);
+                            startActivity(intent);
+                        }
+
                     }
                     else
                     {

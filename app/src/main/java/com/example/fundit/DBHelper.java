@@ -26,6 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(MyDB);
 
     }
+
+    // Method to insert data into database
     public Boolean insertData(String fname,String lname,String email,String password,String userType){
         SQLiteDatabase MyDB = this.getWritableDatabase();
 
@@ -43,6 +45,8 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+    //method to check for existing user
     public Boolean checkusername(String email){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.rawQuery("Select * from users where email=?",new String[]{email});
@@ -51,6 +55,8 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
+    //method to validate user's email and password in database
     public boolean checkusernamepassword(String email,String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor= MyDB.rawQuery("Select * from users where email=? and password = ? ",new String[]{email,password});
@@ -58,7 +64,21 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         else
              return false;
-
-
     }
+
+    //method to check type of user
+    public String userTypeCheck(String email)
+    {
+        String userType="";
+        SQLiteDatabase MyDB=this.getReadableDatabase();
+        String query="Select userType from users where email=?";
+        Cursor cursor=MyDB.rawQuery(query,new String[]{email});
+
+        if(cursor.moveToFirst())
+        {
+            userType=cursor.getString(0);
+        }
+        return userType;
+    }
+
 }

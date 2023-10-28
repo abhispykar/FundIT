@@ -24,10 +24,27 @@ public class LoginActivity extends AppCompatActivity {
         email=(EditText) findViewById(R.id.email);
         password=(EditText) findViewById(R.id.password);
         btnlogin=(Button) findViewById(R.id.btn_signin);
-        btnsignup=(Button) findViewById(R.id.btn_signin);
+        btnsignup=(Button) findViewById(R.id.btnsignup);
         DB = new DBHelper(getApplicationContext());
 
 
+
+        // Signup
+        btnsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,Dashboard.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
+
+
+        //Login
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

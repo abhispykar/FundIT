@@ -12,6 +12,9 @@
     <string name="if_already_register">Already Register</string>
     <string name="signin">Sign in</string>
     <string name="investor_profile">Investor Profile</string>
+    <string name="about_us">About Us</string>
+    <string name="naviopen">navigation open</string>
+    <string name="naviclose">navigation close</string>
 
 
     <string-array name="user">

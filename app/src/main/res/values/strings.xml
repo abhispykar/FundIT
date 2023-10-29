@@ -15,6 +15,12 @@
     <string name="about_us">About Us</string>
     <string name="naviopen">navigation open</string>
     <string name="naviclose">navigation close</string>
+    <string name="bio">Bio</string>
+    <string name="experience">Experience</string>
+    <string name="company_name">Company Name</string>
+    <string name="publish">publish</string>
+    <string name="save" >save</string>
+    <string name="update">update</string>
 
 
     <string-array name="user">

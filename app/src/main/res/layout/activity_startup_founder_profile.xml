@@ -94,7 +94,7 @@
                         android:drawableStart="@drawable/ic_1"
                         android:drawablePadding="20dp"
                         android:paddingStart="20dp"
-                        android:text="My Ideas"
+                        android:text="Company Info"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         style="@android:style/Widget.Button"
@@ -113,7 +113,7 @@
                         android:drawableStart="@drawable/ic_3"
                         android:drawablePadding="20dp"
                         android:paddingStart="20dp"
-                        android:text="Persoanl Information"
+                        android:text="Profile"
                         android:textAlignment="viewStart" />
 
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     EditText email,password;
     Button btnlogin,btnsignup;
+    SharedPreferences sp;
 
     DBHelper DB;
 
@@ -27,7 +29,9 @@ public class LoginActivity extends AppCompatActivity {
         btnsignup=(Button) findViewById(R.id.btnsignup);
         DB = new DBHelper(getApplicationContext());
 
-
+        //Creating object of sharedPreferences
+        sp=getApplicationContext().getSharedPreferences("session",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
 
         // Signup
         btnsignup.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user =email.getText().toString();
                 String pass=password.getText().toString();
+                int userID;
 
                 if(user.equals("")||pass.equals(""))
                 {
@@ -60,6 +65,14 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkuserpass=DB.checkusernamepassword(user,pass);
                     if(checkuserpass==true)
                     {
+
+                        //Setting userID for session
+                        userID=DB.getUserID(user);
+
+                        editor.putBoolean("isLoggedIn",true);
+                        editor.putInt("userID",userID);
+                        editor.commit();
+
                         Toast.makeText(getApplicationContext(),"Sign in Successfully",Toast.LENGTH_LONG).show();
 
                         String userType=DB.userTypeCheck(user);

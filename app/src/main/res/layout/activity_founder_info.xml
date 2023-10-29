@@ -19,6 +19,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
+
+    <TextView
+        android:id="@+id/founderID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_update"
+        tools:layout_editor_absoluteX="-14dp" />
+
     <EditText
         android:id="@+id/bio"
         android:layout_width="match_parent"

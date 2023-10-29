@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
-    public static final String DBNAME="Login.db";
+    public static final String DBNAME="fundit.db";
 
     public DBHelper(Context context){
-        super(context,"Login.db",null,1);
+        super(context,DBNAME,null,1);
     }
 
     @Override
@@ -79,6 +79,21 @@ public class DBHelper extends SQLiteOpenHelper {
             userType=cursor.getString(0);
         }
         return userType;
+    }
+
+    //Method to get userID
+    public int getUserID(String email)
+    {
+        int userID=-1;
+        SQLiteDatabase MyDB=this.getReadableDatabase();
+        String query="Select email from users where email=?";
+        Cursor cursor=MyDB.rawQuery(query,new String[]{email});
+
+        if(cursor.moveToFirst())
+        {
+            userID=cursor.getInt(0);
+        }
+        return userID;
     }
 
 }

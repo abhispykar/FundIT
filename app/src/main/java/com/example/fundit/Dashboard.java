@@ -13,7 +13,6 @@ public class Dashboard extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -21,6 +20,7 @@ public class Dashboard extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
 
         drawerLayout = findViewById(R.id.drawerlayout);
         navigationView = findViewById(R.id.navigationview);

@@ -34,10 +34,11 @@ public class DBFounder extends SQLiteOpenHelper {
     {
         SQLiteDatabase MyDB=this.getWritableDatabase();
 
+
         ContentValues contentValues=new ContentValues();
+        contentValues.put("bio",bio);
         contentValues.put("education",education);
         contentValues.put("experience",experience);
-        contentValues.put("bio",bio);
         contentValues.put("userID",userID);
 
         long result=MyDB.insert("founder",null,contentValues);

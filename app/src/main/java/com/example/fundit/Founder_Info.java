@@ -39,7 +39,7 @@ public class Founder_Info extends AppCompatActivity {
 
     }
 
-    public void saveFounderDetail(View view)
+    public void saveFounderDetails(View view)
     {
         sp=this.getSharedPreferences("session",MODE_PRIVATE);
         int userID=sp.getInt("userID",-1);

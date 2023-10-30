@@ -41,7 +41,7 @@ public class Founder_Info extends AppCompatActivity {
 
     public void saveFounderDetail(View view)
     {
-        sp=getActivity().getSharedPreferences("session",MODE_PRIVATE);
+        sp=this.getSharedPreferences("session",MODE_PRIVATE);
         int userID=sp.getInt("userID",-1);
 
         String founder_bio=bio.getText().toString();

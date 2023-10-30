@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Dashboard"
     android:id="@+id/drawerlayout"
+    android:background="#38efd3"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
     
@@ -40,9 +41,9 @@
                 android:layout_marginBottom="5dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:title="FundIt"
-                app:titleMarginStart="10dp"
-                app:titleTextColor="@color/black"
                 android:background="#38efd3"
+                app:titleMarginStart="10dp"
+                app:titleTextColor="@color/white"
                 tools:ignore="MissingConstraints" />
 
 
@@ -90,9 +91,10 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/List1"
+                        android:background="#38efd3"
                         android:layout_width="match_parent"
                         android:layout_height="416dp"
-                        android:background="#38efd3" />
+                        />
 
                 </androidx.cardview.widget.CardView>
 

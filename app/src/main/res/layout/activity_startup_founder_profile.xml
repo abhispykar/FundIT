@@ -27,21 +27,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Founder Profile"
+                    android:textStyle="bold"
+                    android:background="@color/white"
                     android:textSize="50dp"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
+                    android:scaleType="fitCenter"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView5"
-                    app:srcCompat="@drawable/ashneer_profile" />
+                    app:srcCompat="@drawable/ashneer_profile"/>
 
                 <TextView
                     android:id="@+id/textView"
@@ -80,6 +81,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:layout_marginTop="12dp"
+                        android:textStyle="bold"
+                        android:background="#38efd3"
                         android:text="I am a passionate coder who has completed his masters from MES IMCC pune "
                         android:textSize="20sp" />
 

@@ -66,10 +66,10 @@ public class DBFounder extends SQLiteOpenHelper {
         int userID = sharedPref.getInt("userID", -1);
         SQLiteDatabase MyDB = this.getReadableDatabase();
 
-        String query = "SELECT founderID FROM founder WHERE userID = ?";
-        String[] selectionArgs = new String[]{Integer.toString(userID)};
+        String query = "SELECT founderID FROM founder WHERE userID = '"+userID+"'";
 
-        Cursor cursor = MyDB.rawQuery(query, selectionArgs);
+
+        Cursor cursor = MyDB.rawQuery(query,null);
 
 
         if(cursor.moveToFirst())

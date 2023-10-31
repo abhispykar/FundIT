@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     EditText email,password;
     Button btnlogin,btnsignup;
-    SharedPreferences sp;
+
 
     DBHelper DB;
 
@@ -29,9 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         btnsignup=(Button) findViewById(R.id.btnsignup);
         DB = new DBHelper(getApplicationContext());
 
-        //Creating object of sharedPreferences
-        sp=getApplicationContext().getSharedPreferences("session",MODE_PRIVATE);
-        SharedPreferences.Editor editor=sp.edit();
+        SessionManager sessionManager=new SessionManager((getApplicationContext()));
 
         // Signup
         btnsignup.setOnClickListener(new View.OnClickListener() {
@@ -69,9 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                         //Setting userID for session
                         userID=DB.getUserID(user);
 
-                        editor.putBoolean("isLoggedIn",true);
-                        editor.putInt("userID",userID);
-                        editor.commit();
+                        sessionManager.createSession(userID);
+
 
                         Toast.makeText(getApplicationContext(),"Sign in Successfully",Toast.LENGTH_LONG).show();
 

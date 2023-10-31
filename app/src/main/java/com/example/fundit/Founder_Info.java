@@ -34,35 +34,43 @@ public class Founder_Info extends AppCompatActivity {
 
         fID=findViewById(R.id.founderID);
 
+        SessionManager sessionManager=new SessionManager((getApplicationContext()));
+
         DB=new DBFounder(getApplicationContext());
 
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sp=getSharedPreferences("session",MODE_PRIVATE);
+                int userID=sp.getInt("userID",-1);
+
+                String founder_bio=bio.getText().toString();
+                String founder_education=education.getText().toString();
+                String founder_experience=experience.getText().toString();
+
+                Boolean insert=DB.insertFounderData(founder_education,founder_experience,founder_bio,userID);
+
+                if(insert==true)
+                {
+                    Toast.makeText(getApplicationContext(),"Founder information added successfully",Toast.LENGTH_LONG).show();
+                    int founderID=DB.getFounderID();
+
+                    //Creating object of sharedPreferences
+                    sessionManager.addFounderID((founderID));
+
+
+                    fID.setText(founderID);
+                }
+
+            }
+        });
+
 
     }
 
-    public void saveFounderDetails(View view)
-    {
-        sp=this.getSharedPreferences("session",MODE_PRIVATE);
-        int userID=sp.getInt("userID",-1);
-
-        String founder_bio=bio.getText().toString();
-        String founder_education=education.getText().toString();
-        String founder_experience=experience.getText().toString();
-
-        Boolean insert=DB.insertFounderData(founder_education,founder_experience,founder_bio,userID);
-
-        if(insert==true)
-        {
-            Toast.makeText(getApplicationContext(),"Founder information added successfully",Toast.LENGTH_LONG).show();
-            int founderID=DB.getFounderID();
-
-            //Creating object of sharedPreferences
-            sp=getApplicationContext().getSharedPreferences("session",MODE_PRIVATE);
-            SharedPreferences.Editor editor=sp.edit();
-            editor.putInt("founderID",founderID);
-
-            fID.setText(founderID);
-        }
-
-
-    }
+//    public void saveFounderDetails(View view)
+//    {
+//
+//
+//    }
 }

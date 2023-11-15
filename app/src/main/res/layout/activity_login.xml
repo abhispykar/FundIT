@@ -8,10 +8,21 @@
     android:background="#38efd3"
     tools:context=".LoginActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login "
+        android:textSize="80dp"
+        android:gravity="center">
+
+
+    </TextView>
+
+
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="185dp"
         android:background="@color/white"
@@ -22,7 +33,7 @@
 
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:background="@color/white"
         android:layout_below="@+id/email"
@@ -44,11 +55,12 @@
     <Button
 
         android:id="@+id/btnsignup"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New user! Go to Sign up page"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/btn_signin"/>
+        android:layout_below="@+id/btn_signin"
+        android:layout_marginTop="41dp"
+        android:layout_marginLeft="40dp"
+        android:text="New user! Go to Sign up page" />
 
 
 </RelativeLayout>

@@ -68,7 +68,7 @@ public class Dashboard extends AppCompatActivity {
                 )
         );
 
-// Image URL with header
+// Image URL with header_
         Map<String, String> headers = new HashMap<>();
         headers.put("header_key", "header_value");
 

@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.DropBoxManager;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.ViewConfiguration;
 
 import com.example.fundit.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
@@ -15,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +43,47 @@ public class Dashboard extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.naviopen, R.string.naviclose);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(Dashboard.this, drawerLayout, toolbar, R.string.naviopen, R.string.naviclose);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         initSlider();
-
+        getOverflowMenu();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.sidemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.account)
+        {
+            Intent intent=new Intent(Dashboard.this,StartupFounderProfile.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void getOverflowMenu() {
+        try {
+            ViewConfiguration config = ViewConfiguration.get(this);
+            @SuppressLint("SoonBlockedPrivateApi") Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            if (menuKeyField != null) {
+                menuKeyField.setAccessible(true);
+                menuKeyField.setBoolean(config, false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void initSlider() {
         // Java
@@ -98,10 +138,5 @@ public class Dashboard extends AppCompatActivity {
 
         carousel.setData(list);
     }
-
-
-
-
-
 
 }

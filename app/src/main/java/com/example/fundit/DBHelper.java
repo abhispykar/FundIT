@@ -82,18 +82,15 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Method to get userID
-    public int getUserID(String email)
+    public Cursor getUserDetails(String email)
     {
         int userID=-1;
         SQLiteDatabase MyDB=this.getReadableDatabase();
-        String query="Select email from users where email=?";
+        String query="Select userID from users where email=?";
         Cursor cursor=MyDB.rawQuery(query,new String[]{email});
 
-        if(cursor.moveToFirst())
-        {
-            userID=cursor.getInt(0);
-        }
-        return userID;
+
+        return cursor;
     }
 
 }

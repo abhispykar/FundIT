@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,Dashboard.class);
+                Intent intent = new Intent(LoginActivity.this,SignUp.class);
                 startActivity(intent);
 
             }
@@ -52,7 +53,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user =email.getText().toString();
                 String pass=password.getText().toString();
-                int userID;
+
+                int userID=0;
 
                 if(user.equals("")||pass.equals(""))
                 {
@@ -64,8 +66,16 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkuserpass==true)
                     {
 
-                        //Setting userID for session
-                        userID=DB.getUserID(user);
+                        Cursor cursor;
+                        //Setting user Details for session
+                        cursor=DB.getUserDetails(user);
+                        if(cursor.moveToFirst())
+                        {
+                            userID=cursor.getInt(0);
+                        }
+
+
+
 
                         sessionManager.createSession(userID);
 
@@ -80,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Intent intent=new Intent(getApplicationContext(),StartupFounderProfile.class);
+                            Intent intent=new Intent(getApplicationContext(),Dashboard.class);
                             startActivity(intent);
                         }
 

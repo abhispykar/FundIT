@@ -25,11 +25,11 @@ public class StartupFounderProfile extends AppCompatActivity {
         txt=findViewById(R.id.textView5);
 
         DB = new DBHelper(getApplicationContext());
-        sp=this.getSharedPreferences("session",MODE_PRIVATE);
-        int userID=sp.getInt("userID",-1);
+        sp=getSharedPreferences("session",MODE_PRIVATE);
+        int userID=sp.getInt("userID",0);
 
         String userIDString = String.valueOf(userID);
-        txt.setText(userIDString);
+//        txt.setText(userIDString);
 
 
         btn.setOnClickListener(new View.OnClickListener() {

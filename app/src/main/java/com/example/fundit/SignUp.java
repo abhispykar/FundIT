@@ -16,6 +16,7 @@ public class SignUp extends AppCompatActivity {
     EditText firstName,lastName,password,email;
     DBHelper DB;
     Spinner sp_user;
+    Validation valid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class SignUp extends AppCompatActivity {
         sp_user=findViewById(R.id.sp_usertype);
 
         DB = new DBHelper(getApplicationContext());
+        valid=new Validation();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        //Registration
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +63,8 @@ public class SignUp extends AppCompatActivity {
                     Boolean checkuser=DB.checkusername(userEmail);
                     if(checkuser==false)
                     {
+
+
                         Boolean insert=DB.insertData(fname,lname,userEmail,pass,userType);
                         if(insert==true)
                         {

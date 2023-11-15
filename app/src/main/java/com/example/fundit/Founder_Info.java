@@ -42,7 +42,7 @@ public class Founder_Info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sp=getSharedPreferences("session",MODE_PRIVATE);
-                int userID=sp.getInt("userID",-1);
+                int userID=sp.getInt("userID",0);
 
                 String founder_bio=bio.getText().toString();
                 String founder_education=education.getText().toString();

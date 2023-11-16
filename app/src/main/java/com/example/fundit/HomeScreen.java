@@ -31,9 +31,6 @@ public class HomeScreen extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),SignUp.class);
                 startActivity(intent);
 
-
-
-
             }
         });
         signin.setOnClickListener(new View.OnClickListener() {

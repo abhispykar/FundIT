@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.fundit.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
@@ -157,7 +158,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                 Toast.makeText(this,"About Us",Toast.LENGTH_LONG).show();
                 break;
             case R.id.logout:
-                Toast.makeText(this,"Logout",Toast.LENGTH_LONG).show();
+                FirebaseAuth.getInstance().signOut();
+                Intent loginIntent =new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(loginIntent);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

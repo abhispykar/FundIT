@@ -1,5 +1,7 @@
 package com.example.fundit;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +16,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
 
@@ -29,6 +37,8 @@ public class SignUp extends AppCompatActivity {
     Spinner sp_user;
     Validation valid;
     FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
+    String userID;
 
     @Override
     public void onStart() {
@@ -50,6 +60,7 @@ public class SignUp extends AppCompatActivity {
         // Initialize Firebase
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
 
         firstName=findViewById(R.id.et_first_name);
         lastName=findViewById(R.id.et_last_name);
@@ -115,6 +126,21 @@ public class SignUp extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_LONG).show();
+
+                                    //Creating users collection in fireStore database
+                                    userID=mAuth.getCurrentUser().getUid();
+                                    DocumentReference documentReference=fStore.collection("users").document(userID);
+                                    Map<String,Object> user=new HashMap<>();
+                                    user.put("firstName",fname);
+                                    user.put("lastName",lname);
+                                    user.put("email",userEmail);
+                                    user.put("userType",userType);
+                                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Log.d(TAG,"onSuccess: user profile created for "+userID);
+                                        }
+                                    });
                                     Intent intent = new Intent(SignUp.this, LoginActivity.class);
                                     startActivity(intent);
                                 } else {

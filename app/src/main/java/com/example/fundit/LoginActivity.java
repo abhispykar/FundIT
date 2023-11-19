@@ -1,6 +1,7 @@
 package com.example.fundit;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -18,11 +19,18 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class LoginActivity extends AppCompatActivity {
     EditText email,password;
     Button btnlogin,btnsignup;
-    FirebaseAuth mAuth;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
 
 
     DBHelper DB;
@@ -31,8 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = fAuth.getCurrentUser();
         if(currentUser != null){
+
             Intent intent=new Intent(getApplicationContext(),Dashboard.class);
             startActivity(intent);
         }
@@ -46,7 +55,10 @@ public class LoginActivity extends AppCompatActivity {
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
+
+
         email=(EditText) findViewById(R.id.email);
         password=(EditText) findViewById(R.id.password);
         btnlogin=(Button) findViewById(R.id.btn_signin);
@@ -77,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 String user =email.getText().toString();
                 String pass=password.getText().toString();
 
-                int userID=0;
+
 
                 if(TextUtils.isEmpty(user))
                 {
@@ -95,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(user, pass)
+                fAuth.signInWithEmailAndPassword(user, pass)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -105,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent=new Intent(getApplicationContext(),Dashboard.class);
                                     startActivity(intent);
 
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = fAuth.getCurrentUser();
 
                                 } else {
                                     // If sign in fails, display a message to the user.

@@ -1,6 +1,7 @@
 package com.example.fundit;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.DropBoxManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +23,11 @@ import android.widget.Toast;
 import com.example.fundit.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
@@ -35,6 +42,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID,userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,10 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         navigationView = findViewById(R.id.navigationview);
         toolbar = findViewById(R.id.toolbar);
         navigationView.bringToFront();
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
+        userID=fAuth.getCurrentUser().getUid();
 
         setSupportActionBar(toolbar);
 
@@ -151,12 +165,34 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         switch(item.getItemId())
         {
             case R.id.account:
-                Intent intent =new Intent(Dashboard.this,StartupFounderProfile.class);
-                startActivity(intent);
+                //Retrieving user Type
+                DocumentReference documentReference = fStore.collection("users").document(userID);
+                documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+
+                        if (error != null) {
+                            // Handle the error or log it for debugging
+                            Log.e("FirestoreListener", "Error: " + error.getMessage(), error);
+                            return;
+                        }
+
+                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                            // DocumentSnapshot is not null and exists, you can access its data
+                            userType = documentSnapshot.getString("userType");
+
+                            // Use userType here or call a method with userType as a parameter
+                            handleUserType(userType);
+                        }
+                    }
+                });
+
                 break;
+
             case R.id.aboutus:
                 Toast.makeText(this,"About Us",Toast.LENGTH_LONG).show();
                 break;
+
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 Intent loginIntent =new Intent(getApplicationContext(),LoginActivity.class);
@@ -165,5 +201,16 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void handleUserType(String userType) {
+        if ("Investor".equals(userType)) {
+            Intent intent = new Intent(getApplicationContext(), InvestorProfile.class);
+            startActivity(intent);
+        } else if ("Founder".equals(userType)) {
+            Intent intent = new Intent(getApplicationContext(), StartupFounderProfile.class);
+            startActivity(intent);
+        }
+
     }
 }

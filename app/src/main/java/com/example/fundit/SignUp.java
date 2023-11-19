@@ -117,6 +117,11 @@ public class SignUp extends AppCompatActivity {
                     password.setError("Password must contain 6 characters");
                     return;
                 }
+                if (!("Founder".equals(userType) || "Investor".equals(userType))) {
+                    Toast.makeText(getApplicationContext(), "Please select a valid user type.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
 
                 //Firebase signup method
                 mAuth.createUserWithEmailAndPassword(userEmail, pass)

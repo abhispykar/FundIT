@@ -165,12 +165,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         switch(item.getItemId())
         {
             case R.id.account:
-                //Retrieving user Type
+                // Retrieving user Type
                 DocumentReference documentReference = fStore.collection("users").document(userID);
                 documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-
                         if (error != null) {
                             // Handle the error or log it for debugging
                             Log.e("FirestoreListener", "Error: " + error.getMessage(), error);
@@ -179,13 +178,23 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
                         if (documentSnapshot != null && documentSnapshot.exists()) {
                             // DocumentSnapshot is not null and exists, you can access its data
-                            userType = documentSnapshot.getString("userType");
+                            String userType = documentSnapshot.getString("userType");
 
-                            // Use userType here or call a method with userType as a parameter
-                            handleUserType(userType);
+                            // Check if userType is not null before using it
+                            if (userType != null) {
+                                // Use userType here or call a method with userType as a parameter
+                                handleUserType(userType);
+                            } else {
+                                // Handle the case where "userType" is null
+                                Log.w("FirestoreListener", "UserType is null for user with ID: " + userID);
+                            }
+                        } else {
+                            // Handle the case where the document doesn't exist
+                            Log.w("FirestoreListener", "Document does not exist for user with ID: " + userID);
                         }
                     }
                 });
+
 
                 break;
 

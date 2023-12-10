@@ -2,6 +2,9 @@ package com.example.fundit;
 
 import static android.app.PendingIntent.getActivity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,13 +21,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 public class Founder_Info extends AppCompatActivity {
     TextView fID;
     EditText bio,education,experience;
     Button btn_profile;
-    SharedPreferences sp;
 
+    FirebaseAuth fAuth;
+    StorageReference storageReference;
+    FirebaseFirestore fStore;
+    FirebaseUser user;
     ImageView profileImage;
+    String userID;
+
 
     DBFounder DB;
 
@@ -38,6 +55,12 @@ public class Founder_Info extends AppCompatActivity {
         education=findViewById(R.id.education);
         experience=findViewById(R.id.experience);
         profileImage=findViewById(R.id.profileImg);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userID = fAuth.getCurrentUser().getUid();
+        storageReference= FirebaseStorage.getInstance().getReference();
 
         fID=findViewById(R.id.founderID);
 
@@ -77,7 +100,6 @@ public class Founder_Info extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
@@ -87,8 +109,27 @@ public class Founder_Info extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
                 profileImage.setImageURI(imageUri);
+
+                uploadImageToFirebase(imageUri);
             }
         }
+    }
+
+    private void uploadImageToFirebase(Uri imageUri) {
+
+        //uploadimage to firebase storage
+        StorageReference fileRef=storageReference.child("profile.jpg");
+        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(getApplicationContext(),"Image uploaded",Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     //    public void saveFounderDetails(View view)
 //    {

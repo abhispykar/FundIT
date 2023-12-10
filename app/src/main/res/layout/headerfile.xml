@@ -14,7 +14,7 @@
         android:src="@drawable/fundit_logo_2" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/userbio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"

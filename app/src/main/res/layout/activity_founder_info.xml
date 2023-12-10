@@ -29,44 +29,70 @@
 
 
     <TextView
-        android:id="@+id/usernameme"
+        android:id="@+id/usernameTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textSize="18dp"
-        android:hint="Founder name"
-        android:minHeight="40dp"
+        android:text="Name"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImg" />
 
     <TextView
-        android:id="@+id/emailid"
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+
+        android:textSize="18dp"
+        android:hint="Founder name"
+        android:minHeight="40dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameTitle" />
+
+    <TextView
+        android:id="@+id/emailTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
+        android:textSize="18dp"
+        android:text="Email"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <TextView
+        android:id="@+id/emailid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+
         android:textSize="18dp"
         android:hint="Founder email"
         android:minHeight="40dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usernameme" />
+        app:layout_constraintTop_toBottomOf="@+id/emailTitle" />
 
     <EditText
         android:id="@+id/bio"
         android:layout_width="match_parent"
         android:layout_height="149dp"
         android:layout_marginTop="28dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_corners"
         android:ems="10"
         android:hint="@string/bio"
         android:inputType="text"
         android:minHeight="40dp"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,8 +103,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textStyle="bold"
-        android:background="@color/white"
+
+        android:background="@drawable/rounded_corners"
         android:ems="10"
         android:hint="@string/experience"
         android:inputType="text"
@@ -93,10 +119,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_corners"
         android:ems="10"
-        android:hint="Education"
-        android:textStyle="bold"
+        android:hint="@string/education"
+
         android:inputType="textEmailAddress"
         android:minHeight="40dp"
         app:layout_constraintEnd_toEndOf="parent"

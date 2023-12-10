@@ -21,31 +21,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/top_background" />
+
+                    android:text="Investor Profile"
+                    android:textSize="50dp"
+                    android:background="@drawable/rounded_corners"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/profileImgHome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="12dp"
+                    android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView"
-                    app:srcCompat="@drawable/ashneer_profile" />
+                    app:layout_constraintHorizontal_bias="0.449"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    app:srcCompat="@drawable/ic_baseline_person_24" />
 
                 <TextView
                     android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ashneer Grover"
+
                     android:layout_marginTop="16dp"
                     android:textSize="25sp"
                     android:textStyle="bold"
@@ -58,11 +62,23 @@
                     android:id="@+id/userEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ashneergrover@gmail.com"
+
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/userName"
                     app:layout_constraintStart_toStartOf="@+id/userName"
                     app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+                <TextView
+                    android:id="@+id/investorinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Investor Info"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,62 +87,143 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/userEmail">
+                    app:layout_constraintTop_toBottomOf="@+id/investorinfo">
+
 
                     <TextView
-                        android:id="@+id/userbio"
+                        android:id="@+id/bioTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="About"
+                        android:textSize="18sp"
+                        android:minHeight="35dp"
+
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.526"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/investorbio"
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_height="wrap_content"
+
+                        android:background="#38efd3"
                         android:text="Ashneer Grover is an Angel Investor and an Entrepreneur from India and is currently the co-founder of CrickPe (Third Unicorn). He has Co-founded Indian Fintech startup BharatPe in 2018"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+
+                        app:layout_constraintTop_toBottomOf="@+id/bioTitle" />
+
+
+
+                    <TextView
+                        android:id="@+id/expTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Experience"
+                        android:textSize="18sp"
+                        android:minHeight="35dp"
+
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.526"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/experience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:hint="Experience"
+                        android:textSize="20sp"
+                        android:minHeight="40dp"
+                        android:layout_marginBottom="1dp"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.526"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/bio" />
+
+                    <TextView
+                        android:id="@+id/eduTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="Education"
+                        android:textSize="18sp"
+                        android:minHeight="35dp"
+
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.526"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/education"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:ems="10"
+                        android:hint="Education"
+                        android:minHeight="40dp"
+                        android:textSize="20sp"
+
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.526"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/experience" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/button"
+                        style="@android:style/Widget.Button"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginStart="32dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="30dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginBottom="10dp"
                         android:drawableStart="@drawable/ic_1"
                         android:drawablePadding="20dp"
                         android:paddingStart="20dp"
-                        android:text="Portfolio Companies"
+                        android:text="Portfolio companies"
+                        android:textAlignment="viewStart"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        style="@android:style/Widget.Button"
-                        android:textAlignment="viewStart" />
+                        android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/profileBtn"
+                        style="@android:style/Widget.Button"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="32dp"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        style="@android:style/Widget.Button"
                         android:layout_marginBottom="10dp"
                         android:drawableStart="@drawable/ic_3"
                         android:drawablePadding="20dp"
                         android:paddingStart="20dp"
-                        android:text="Persoanl Information"
-                        android:textAlignment="viewStart" />
+                        android:text="Profile"
+                        android:textAlignment="viewStart"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/backToHome"
+                        style="@android:style/Widget.Button"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        style="@android:style/Widget.Button"
-                        android:layout_marginEnd="32dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:onClick="backToDashboard"
                         android:text="Back to Home Screen"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

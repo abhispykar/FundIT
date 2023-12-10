@@ -163,6 +163,24 @@ public class SignUp extends AppCompatActivity {
                                             }
                                         });
                                     }
+                                    else if(userType.equals("Investor"))
+                                    {
+                                        Map<String, Object> userExtraColumn = new HashMap<>();
+                                        userExtraColumn.put("userbio", null);
+                                        userExtraColumn.put("experience", null);
+                                        userExtraColumn.put("education", null);
+                                        userExtraColumn.put("interests", null);
+
+                                        // Use the same DocumentReference for updating the existing document
+                                        documentReference = fStore.collection("users").document(userID);
+
+                                        documentReference.update(userExtraColumn).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Log.d(TAG, "onSuccess: extra columns added for " + userID);
+                                            }
+                                        });
+                                    }
 
                                     Intent intent = new Intent(SignUp.this, LoginActivity.class);
                                     startActivity(intent);

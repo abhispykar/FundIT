@@ -46,7 +46,7 @@ public class StartupFounderProfile extends AppCompatActivity {
         txt = findViewById(R.id.textView5);
         uname = findViewById(R.id.userName);
         uemail = findViewById(R.id.userEmail);
-        userbio = findViewById(R.id.userbio);
+        userbio = findViewById(R.id.founderbio);
         userexperience = findViewById(R.id.experience);
         usereducation = findViewById(R.id.education);
 
@@ -63,8 +63,7 @@ public class StartupFounderProfile extends AppCompatActivity {
         StorageReference profileRef=storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
+            public void onSuccess(Uri uri) {Picasso.get().load(uri).into(profileImage);
             }
         });
 
@@ -80,13 +79,25 @@ public class StartupFounderProfile extends AppCompatActivity {
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                uname.setText(documentSnapshot.getString("firstName") + " " + documentSnapshot.getString("lastName"));
-                uemail.setText(documentSnapshot.getString("email"));
-                userbio.setText(documentSnapshot.getString("userbio"));
-                userexperience.setText(documentSnapshot.getString("experience"));
-                usereducation.setText(documentSnapshot.getString("education"));
+                if (documentSnapshot != null) {
+                    String firstName = documentSnapshot.getString("firstName");
+                    String lastName = documentSnapshot.getString("lastName");
+                    String email = documentSnapshot.getString("email");
+                    String userbioValue = documentSnapshot.getString("userbio");
+                    String experienceValue = documentSnapshot.getString("experience");
+                    String educationValue = documentSnapshot.getString("education");
+
+                    // Set default message if the value is null
+                    String fullName = (firstName != null ? firstName : "") + " " + (lastName != null ? lastName : "");
+                    uname.setText(!fullName.trim().isEmpty() ? fullName : "Details not available");
+                    uemail.setText(email != null ? email : "Details not available");
+                    userbio.setText(userbioValue != null ? userbioValue : "Details not available");
+                    userexperience.setText(experienceValue != null ? experienceValue : "Details not available");
+                    usereducation.setText(educationValue != null ? educationValue : "Details not available");
+                }
             }
         });
+
 
 
         profilebtn.setOnClickListener(new View.OnClickListener() {

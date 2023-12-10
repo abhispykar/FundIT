@@ -15,8 +15,8 @@
     <string name="about_us">About Us</string>
     <string name="naviopen">navigation open</string>
     <string name="naviclose">navigation close</string>
-    <string name="bio">Bio</string>
-    <string name="experience">Experience</string>
+    <string name="bio">Tell us about yourself...</string>
+    <string name="experience">Tell us about your experience...</string>
     <string name="company_name">Company Name</string>
     <string name="publish">publish</string>
     <string name="save">save</string>
@@ -37,7 +37,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
+    <string name="education">Tell us about your education...</string>
 
 
 </resources>

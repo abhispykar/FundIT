@@ -1,17 +1,13 @@
 package com.example.fundit;
 
-import static android.app.PendingIntent.getActivity;
 import static android.content.ContentValues.TAG;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -40,7 +36,8 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Founder_Info extends AppCompatActivity {
+public class Investor_Info extends AppCompatActivity {
+
     TextView userName,userEmail;
     EditText bio,education,experience;
     Button btn_profile,updatebtn;
@@ -56,12 +53,10 @@ public class Founder_Info extends AppCompatActivity {
     String userID;
     private Uri imageUri;
 
-    DBFounder DB;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_founder_info);
+        setContentView(R.layout.activity_investor_info);
 
         btn_profile =(Button) findViewById(R.id.btn_profile_img);
         updatebtn = (Button) findViewById(R.id.btn_update);
@@ -88,9 +83,6 @@ public class Founder_Info extends AppCompatActivity {
         });
 
 
-
-
-
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +92,7 @@ public class Founder_Info extends AppCompatActivity {
                 startActivityForResult(openGalleryIntent,1000);
             }
         });
+
 
         updatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +104,6 @@ public class Founder_Info extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Details Updated Successfully", Toast.LENGTH_LONG).show();
             }
         });
-
 
 
         DocumentReference documentReference = fStore.collection("users").document(userID);
@@ -170,17 +162,17 @@ public class Founder_Info extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1000){
             if(resultCode == Activity.RESULT_OK){
                 imageUri = data.getData();
-               // profileImage.setImageURI(imageUri);
+                // profileImage.setImageURI(imageUri);
             }
         }
     }
+
 
     private void uploadImageToFirebase(Uri imageUri) {
 
